@@ -1,1 +1,5 @@
+# Ignorar todas las imágenes PNG
 *.png
+
+# Excepto la imagen jessie.png
+!jessie.png
