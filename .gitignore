@@ -2,4 +2,4 @@
 *.png
 
 # Excepto la imagen jessie.png
-!jessie.png
+!Day6-scaping_maze.png
