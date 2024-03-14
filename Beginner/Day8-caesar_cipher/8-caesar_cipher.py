@@ -5,37 +5,49 @@ print(logo)
 
 alphabet = string.ascii_lowercase  #abcdefghijklmnopqrstuvwxyz
 
-direction = input("Type 'encode' to encrypt, type 'decode' to decrypt: ")
-text = input('Type your message: ').lower()
-shift = int(input('Type the shift number: '))
-
-#empty list for the new text
-new_text = []
 
 def caesar(original_text, steps, choose):
-    for letter in original_text:
-        index_letter = alphabet.index(letter)
+    #empty list for the new text
+    new_text = []
 
-        if choose == 'encode':
-            new_index = index_letter + steps
-            if new_index >= 26:
-                new_index -= 26
+    for character in original_text:
+        if character.isalpha():
+            index_letter = alphabet.index(character)
 
-        elif choose == 'decode':
-            new_index = index_letter - steps
-            if new_index < 0:
-                new_index += 26
+            if choose == 'encode':
+                new_index = (index_letter + steps) % 26
+
+            elif choose == 'decode':
+                new_index = (index_letter - steps) % 26    
+        
+            new_letter = alphabet[new_index]
+            new_text.append(new_letter)
         
         else:
-            print('invalid input... dumb bitch') 
-            exit() 
-    
-        new_letter = alphabet[new_index]
-        new_text.append(new_letter)
+            new_text.append(character)
 
     print(f"The {choose}d text is {''.join(new_text)}")
 
+#inputs from user
+def inputs():
+    direction = input("Type 'encode' to encrypt, type 'decode' to decrypt: ")
+    text = input('Type your message: ').lower()
+    shift = int(input('Type the shift number: '))
 
-caesar(text, shift, direction)
+    return direction, text, shift
+
+
+while True:
+        direction, text, shift = inputs()
+        
+        caesar(text, shift, direction)
+
+        user_input = input("Type 'yes' if you want to go again. Otherwise type 'no': ").lower()
+        
+        if user_input != 'yes':
+             print('Goodbye, go outside please...')
+             break
+
+    
 
 
