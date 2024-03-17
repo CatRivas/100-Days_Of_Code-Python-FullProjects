@@ -1,6 +1,5 @@
 # Ignorar todas las imágenes PNG
 *.png
 
-# Excepto la imagen jessie.png
-!Day6-scaping_maze.png
+# Excepto
 !hangman_flowchart.png
