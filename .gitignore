@@ -1,5 +1,0 @@
-# Ignorar todas las imágenes PNG
-*.png
-
-# Excepto
-!hangman_flowchart.png
