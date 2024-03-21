@@ -12,6 +12,17 @@ def random_number():
 
     return random_number
 
+def level_dif():
+    difficulty = input("Choose a difficulty. Type 'easy' or 'hard': ").lower().strip()
+
+    if difficulty == 'easy':
+        gameplay(10)
+    elif difficulty == 'hard':
+        gameplay(5)
+    else:
+        print('Invalid input')
+        exit()
+
 def compare_guess(guess, npc_number):
     """
     Compares the user's guess with the randomly generated number.
@@ -37,7 +48,7 @@ def gameplay(attempst):
         attempts (int): The number of attempts the user has to guess the number.
     """
     result = random_number()
-    print(f'el numero random es: {result}')
+    print(f'the random number is: {result}')
 
     for _ in range(attempst):    
         print(f'You have {attempst} attempts remaining to guess the number.')
@@ -52,18 +63,11 @@ def gameplay(attempst):
     if attempst == 0:
         print("You've run out of guesses, you lose.")
 
+def start_game():
+    #prints and calls
+    print(logo)
+    print('Welcome to the Number Guessing Game!')
+    print("I'm thinking of a number between 1 and 100.")
+    level_dif()
 
-#prints and calls
-print(logo)
-print('Welcome to the Number Guessing Game!')
-print("I'm thinking of a number between 1 and 100.")
-
-difficulty = input("Choose a difficulty. Type 'easy' or 'hard': ").lower().strip()
-
-if difficulty == 'easy':
-    gameplay(10)
-elif difficulty == 'hard':
-    gameplay(5)
-else:
-    print('Invalid input')
-    exit()
+start_game()
