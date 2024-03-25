@@ -8,16 +8,19 @@ def report():
     print(f'Money: ${money}')
 
 def check_resources(user_coffee):
+    enough_resources = True
     for value in user_coffee["ingredients"]:    
-        if resources[value] > user_coffee["ingredients"][value]:
-            print('choose sometjhing else')
+        if resources[value] < user_coffee["ingredients"][value]:
+            enough_resources = False
+            print(f"Sorry there is not enough {value}.")
+            break
+        
+    if enough_resources:
+        get_coins()
+           
 
-# def check_resources(user_coffee):
-#     for ingredient, amount in user_coffee["ingredients"].items():
-#         if resources[ingredient] > amount:
-#             print(f"Not enough {ingredient}. Choose something else.")
-#     #         return False
-#     # return True
+def get_coins():
+    print('bitch llegue aca, meteme tu monedita')
 
 def option(user_choice):
     if user_choice == 'report':
@@ -29,7 +32,9 @@ def option(user_choice):
     elif user_choice == 'cappuccino':
         check_resources(MENU["cappuccino"])
     elif user_choice == 'off':
+        print('bye bye')
         exit()
+
 
 choose = input("What would you like? (espresso/latte/cappuccino): ")
 option(choose)
