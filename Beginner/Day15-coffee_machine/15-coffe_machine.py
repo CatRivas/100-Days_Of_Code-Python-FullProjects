@@ -27,29 +27,32 @@ def money_update(cost):
 
 def check_resources(user_coffee):
     """Check if there are enough resources to make the selected coffee."""
-    enough_resources = True
+    # enough_resources = True
     for value in user_coffee["ingredients"]:    
+        # Check if the available resources for the ingredient are less than required
         if resources[value] < user_coffee["ingredients"][value]:
-            enough_resources = False
+            # enough_resources = False
+            # If not enough of an ingredient, print a message and return False
             print(f"Sorry there is not enough {value}.")
             return False
 
-    if enough_resources:
-        return True
+    # if enough_resources:
+    # If all ingredients are available in sufficient quantity, return True
+    return True
            
 
 def get_coins():
-    """Prompt the user to insert coins and return the input."""
+    """Prompt the user to insert coins and return the coins."""
     print('Please insert coins.')
-    quarters = float(input('How many quarters?: '))
-    dimes = float(input('How many dimes?: '))
-    nickles = float(input('How many nickles?: '))
-    pennies = float(input('How many pennies?: '))
+    quarters = int(input('How many quarters?: '))
+    dimes = int(input('How many dimes?: '))
+    nickles = int(input('How many nickles?: '))
+    pennies = int(input('How many pennies?: '))
 
     return quarters, dimes, nickles, pennies
 
 def process_payment(q, d, n, p):
-    """Calculate the total amount of money inserted by the user."""
+    """Calculate and returns the total amount of money inserted by the user."""
     # Calculate the total amount of money inserted by the user based on the coin quantities
     total = q * 0.25 + d * 0.10 + n * 0.05 + p * 0.01
     
@@ -59,12 +62,15 @@ def transaction(coffe_cost, user_money):
     """Process the transaction and provide change if necessary."""
     change = 0
     if coffe_cost > user_money:
-        return "Sorry that's not enough money. Money refunded."
+        print("Sorry that's not enough money. Money refunded.")
+        
+        return False
     
     elif coffe_cost < user_money:
         change = round(user_money - coffe_cost, 2)
-
-        return f'Here is ${change} in change.\nHere is your {user_option} ☕ Enjoy!'
+        print(f'Here is ${change} in change.\nHere is your {user_option} ☕ Enjoy!')
+        
+        return True
 
 
 # Initialize in zero the current profit (the first report ¡you know!)
@@ -86,9 +92,9 @@ while True:
             cant_quarters,cant_dimes,cant_nickles,cant_pennies = get_coins()
             amount = process_payment(cant_quarters,cant_dimes,cant_nickles,cant_pennies)
             result = transaction(MENU[user_option]["cost"], amount)
-            print(result)
+
             # Update resources and profit if the transaction is successful
-            if result != "Sorry that's not enough money. Money refunded.":
+            if result: #True
                 resources_update(user_option)
                 current_profit = money_update(MENU[user_option]["cost"])
 
