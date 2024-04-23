@@ -45,6 +45,7 @@ for item in range(6):
     y_position = y_position + 50
     constestant_list.append(constestant)
 
+# print(constestant_list)  #[<turtle.Turtle object at 0x00000295C1457BC0>, <turtle.Turtle object at 0x00000295C1457E90>, <turtle.Turtle object at 0x00000295C1484170>, <turtle.Turtle object at 0x00000295C1484440>, <turtle.Turtle object at 0x00000295C14846E0>, <turtle.Turtle object at 0x00000295C1484980>]
 
 #race
 if user_choose_contestant:
