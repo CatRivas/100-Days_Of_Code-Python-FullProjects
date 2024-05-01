@@ -1,6 +1,8 @@
 import turtle
 import time
 from snake import Snake
+from food import Food
+from score import Score
 
 #screen setup
 screen = turtle.Screen()
@@ -9,8 +11,17 @@ screen.bgcolor('black')
 screen.title('Snake Game 30-04-2024')
 screen.tracer(0) #turn off tracer
 
+
+
 #creating an instance of Snake()
 snake = Snake()
+
+#creating an instance of Food()
+food = Food()
+
+#creating an instance of Score()
+score = Score()
+
 
 #keybord
 screen.listen()
@@ -28,6 +39,11 @@ while game_is_on:
     time.sleep(0.1)
     
     snake.move()
+
+    #detecting collision with food
+    if snake.head.distance(food) < 15: 
+        food.refresh()
+        score.increase_score()
     
     
 
