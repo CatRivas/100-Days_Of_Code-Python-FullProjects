@@ -1,6 +1,6 @@
 import turtle
 
-X_POSITIONS = [0, -20, -40]
+POSITIONS = [(0, 0), (-20, 0), (-40, 0)]
 MOVE_DISTANCE = 20
 UP = 90
 DOWN = 270
@@ -12,17 +12,27 @@ class Snake:
         self.snake_parts = []
         self.create_snake()  #calling create_snake()
         self.head = self.snake_parts[0]
-    def create_snake(self):
-        for position in range(3):
-            sub_snake = turtle.Turtle()
-            sub_snake.shape('square')
-            sub_snake.color('white')
-            sub_snake.penup()
 
-            sub_snake.teleport(x= X_POSITIONS[position] , y=0)
-            self.snake_parts.append(sub_snake)
+    #create snake
+    def create_snake(self):
+        for position in POSITIONS:
+            self.add_part_snake(position)
+
+    def add_part_snake(self, position):
+        sub_snake = turtle.Turtle()
+        sub_snake.shape('square')
+        sub_snake.color('white')
+        sub_snake.penup()
+
+        sub_snake.goto(position)  # using teleport() in here , break my code
+        self.snake_parts.append(sub_snake)
+
+    #add new part to the current snake 
+    def extend_snake(self):
+        self.add_part_snake(self.snake_parts[-1].position())
 
     def move(self):
+        
         for part in range(len(self.snake_parts) - 1, 0, -1):
             new_x = self.snake_parts[part -1].xcor()
             new_y = self.snake_parts[part -1].ycor()
