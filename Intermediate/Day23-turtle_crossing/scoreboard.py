@@ -15,7 +15,7 @@ class Scoreboard(Turtle):
 
     def score_update(self):
         self.clear()
-        self.goto(-210, 250)
+        self.goto(-210, 250) #the position i want for the scoreboard on the screen
         self.write(arg=f'Level: {self.level}', align='center',font=FONT)  
         
     def level_up(self):
