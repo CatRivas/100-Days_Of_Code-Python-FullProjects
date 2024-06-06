@@ -8,7 +8,7 @@ from score import Score
 screen = turtle.Screen()
 screen.setup(width=600, height=600)
 screen.bgcolor('black')
-screen.title('Snake Game 30-04-2024')
+screen.title('Snake Game 30-04-2024 & high score 06-06-2024')
 screen.tracer(0) #turn off tracer
 
 
@@ -48,17 +48,18 @@ while game_is_on:
 
     #detecting collision with wall (GAME OVER)
     if snake.head.xcor() < -280 or snake.head.xcor() > 280 or snake.head.ycor() < -280 or snake.head.ycor() > 280:
-        game_is_on = False
-        score.game_over()
-    
+        # game_is_on = False
+        # score.game_over()
+        score.reset()
+        snake.reset()
+
     #detecting collision with tail (GAME OVER)
     for part_snake in snake.snake_parts[1:]: #omiting the first part of the snake (head)
         if snake.head.distance(part_snake) < 10:
-            game_is_on = False
-            score.game_over()
-
-
-
+            # game_is_on = False
+            # score.game_over()
+            score.reset()
+            snake.reset()
 
 screen.exitonclick()
 

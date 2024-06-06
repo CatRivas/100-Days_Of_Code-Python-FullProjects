@@ -31,6 +31,14 @@ class Snake:
     def extend_snake(self):
         self.add_part_snake(self.snake_parts[-1].position())
 
+    def reset(self):
+        for part in self.snake_parts:
+            part.goto(1000, 1000)
+        
+        self.snake_parts.clear() #removing all the parts of the snake
+        self.create_snake()
+        self.head = self.snake_parts[0]
+
     def move(self):
         
         for part in range(len(self.snake_parts) - 1, 0, -1):
