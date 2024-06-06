@@ -9,6 +9,7 @@ class Score(turtle.Turtle):
         self.score = 0
 
         #using data.txt
+        # with open('C:\\Users\\Usser\\Desktop\\data.txt') as f:
         with open('data.txt') as f:
             contents = f.read()
 
@@ -27,6 +28,7 @@ class Score(turtle.Turtle):
             self.high_score = self.score
 
             #RECORDING the highest score in data.txt (overwrite it)
+            # with open('C:\\Users\\Usser\\Desktop\\data.txt', mode= 'w') as f:
             with open('data.txt', mode= 'w') as f:
                 f.write(str(self.score))
         
