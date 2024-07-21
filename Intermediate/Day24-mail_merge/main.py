@@ -17,9 +17,10 @@ for name in names:
     new_invite = template.replace('[name]', guest)
     # print(new_invite)
 
-    #creating each letter
+    #saving the path of each new letter
     path = f'Output\\ReadyToSend\\letter_for_{guest}.txt'
 
+    #creating each letter
     with open(path, mode='w') as f:
         f.write(new_invite)
 
