@@ -18,7 +18,7 @@ turtle.shape(us_image)
 # keeps the window open
 # turtle.mainloop()
 
-# mi escritor
+# my writer
 tommy = turtle.Turtle()
 tommy.hideturtle()
 
@@ -32,16 +32,21 @@ df = pd.read_csv(path)
 # 1   Alaska -204 -170
 # 2  Arizona -203  -40
 
-# lista de states
-states = df['state'].values 
+
+# states list
+states = df['state'].to_list() 
 
 score = 0
 
-while True:
+while score < 51:
     # user input
     answer = screen.textinput(title=f'{score}/50 States Correct', prompt="Give me the name of a US state?").strip().title()
-    # print(answer)
-    # verificando si existe el answer en el dataframe
+
+    if answer == 'Exit':
+        # print(states)
+        break
+
+    # checking if the user answer exists in the dataframe
     if answer in states:
         state_row = df[df['state'] == answer]
         # print(state_row) 
@@ -54,31 +59,28 @@ while True:
         # x_coor = state_row['x'].values
         # print(x_coor) #[139]
         
-        # handling the coordinates
+        # taking the coordinates
         x_coor = state_row['x'].values[0]
         y_coor = state_row['y'].values[0]
 
         # writting the coordinates on the map 
-        
         tommy.penup()  
         tommy.goto(x = x_coor, y = y_coor)
         tommy.write(answer)
 
-
         score += 1
+
+        states.remove(answer)
     else:
-        # print('bitch ese state no es de USA')
         continue
 
+ 
+# first: convert my list into a dataframe or series
+df_missing_states = pd.DataFrame(states)
+# print(df_missing_states.head())
 
-    # screen.exitonclick()
-
-
-
-
-
-
-
+# second: exporting the .csv file
+df_missing_states.to_csv('user_missing_states.csv')
 
 
 
@@ -87,15 +89,13 @@ while True:
 
 
 
-# states = df['state'].to_list()
-# # print(state)# ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming']
 
-# x_coor = df['x'] 
-# y_coor = df['y'] 
 
-# states_dict = df.to_dict()
 
-# print(states_dict['state'][0]) #alabama
+
+
+
+
 
 
 
