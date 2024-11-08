@@ -5,6 +5,7 @@ import pandas as pd
 
 
 def main():
+    # check Environment variables and fix this
     sender_email = 'sender@gmail.com'
     sender_password = 'password123'
 
