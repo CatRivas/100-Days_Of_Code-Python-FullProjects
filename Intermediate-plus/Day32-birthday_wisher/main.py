@@ -2,12 +2,16 @@ import smtplib
 import datetime as dt
 import random
 import pandas as pd
-
+from dotenv import load_dotenv
+import os
 
 def main():
-    # check Environment variables and fix this
-    sender_email = 'sender@gmail.com'
-    sender_password = 'password123'
+    # let's load the .env file
+    load_dotenv()
+
+    #now we access the enviroment varibales in the loaded .env file
+    sender_email = os.getenv('secret_sender_email')
+    sender_password = os.getenv('secret_sender_password')
 
     csv_path = 'birthdays.csv'
     df = pd.read_csv(csv_path)
