@@ -2,6 +2,8 @@ import smtplib
 import datetime as dt
 import random
 import pandas as pd
+
+##dotenv for saving environment variables in the project, not in the system
 from dotenv import load_dotenv
 import os
 
