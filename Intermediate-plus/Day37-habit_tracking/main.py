@@ -52,7 +52,6 @@ graph_config = {
 create_pixel_endpoint = f"{graph_endpoint}/{GRAPH_ID}"
 
 today_date = datetime.now().date()
-# Get today’s date in 
 today_date_formatted = today_date.strftime("%Y%m%d") #required format
 
 
