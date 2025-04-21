@@ -35,6 +35,10 @@ exercises_list = result['exercises']
 # SHEETY API
 sheety_endpoint = "https://api.sheety.co/4ee484cad71541617520838c5dbd3155/myWorkoutApril2025/workouts"
 
+sheety_headers = {
+    "Authorization": os.getenv('SHEETY_TOKEN'),
+}
+
 today_date = datetime.now().strftime("%d/%m/%Y")
 current_time = datetime.now().strftime("%H:%M:%S")
 
@@ -50,7 +54,7 @@ for exercise in exercises_list:
     }
 
 
-    sheety_response = requests.post(sheety_endpoint , json=exercise_data_input)
+    sheety_response = requests.post(sheety_endpoint , json=exercise_data_input, headers=sheety_headers)
     sheety_response.raise_for_status()
     print(sheety_response.status_code)
     print(sheety_response.json())
