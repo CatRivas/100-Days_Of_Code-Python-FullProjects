@@ -1,3 +1,5 @@
+#  Check the output: https://docs.google.com/spreadsheets/d/1Sd9LX_numAG43_zed4dDy2YFh0fbf372XIz3A0HCiog/edit?gid=0#gid=0
+
 import requests
 from dotenv import load_dotenv
 import os
