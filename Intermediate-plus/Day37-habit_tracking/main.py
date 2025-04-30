@@ -1,3 +1,5 @@
+# Check the graph: https://pixe.la/v1/users/granito-code/graphs/booktracker.html 
+
 import requests
 from dotenv import load_dotenv
 import os
